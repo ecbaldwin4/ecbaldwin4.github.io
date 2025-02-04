@@ -14,10 +14,30 @@ document.getElementById('no-button').addEventListener('click', function() {
 
 function moveButton() {
     const noButton = document.getElementById('no-button');
-    const x = Math.random() * (window.innerWidth - noButton.offsetWidth);
-    const y = Math.random() * (window.innerHeight - noButton.offsetHeight);
-    noButton.style.left = `${x}px`;
-    noButton.style.top = `${y}px`;
+    const yesButton = document.getElementById('yes-button');
+
+    let x, y;
+    let overlapping = true;
+
+    while (overlapping) {
+        x = Math.random() * (window.innerWidth - noButton.offsetWidth);
+        y = Math.random() * (window.innerHeight - noButton.offsetHeight);
+        
+        noButton.style.left = `${x}px`;
+        noButton.style.top = `${y}px`;
+
+        const noRect = noButton.getBoundingClientRect();
+        const yesRect = yesButton.getBoundingClientRect();
+
+        if (
+            noRect.left >= yesRect.right || 
+            noRect.right <= yesRect.left || 
+            noRect.top >= yesRect.bottom || 
+            noRect.bottom <= yesRect.top
+        ) {
+            overlapping = false;
+        }
+    }
 }
 
 function createHearts() {

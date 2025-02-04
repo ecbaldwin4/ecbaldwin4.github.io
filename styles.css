@@ -7,7 +7,7 @@ body {
     background-color: #ffe6e6;
     margin: 0;
     overflow: hidden;
-    position: relative; /* Add this line */
+    position: relative;
 }
 
 .container {
@@ -31,7 +31,7 @@ button {
     cursor: pointer;
     font-size: 16px;
     margin: 10px;
-    position: absolute; /* Add this line */
+    position: absolute;
 }
 
 button:hover {
