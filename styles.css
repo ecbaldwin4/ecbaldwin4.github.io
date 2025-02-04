@@ -6,6 +6,7 @@ body {
     height: 100vh;
     background-color: #ffe6e6;
     margin: 0;
+    overflow: hidden;
 }
 
 .container {
@@ -28,6 +29,7 @@ button {
     border-radius: 5px;
     cursor: pointer;
     font-size: 16px;
+    margin: 10px;
 }
 
 button:hover {
@@ -42,3 +44,21 @@ button:hover {
     color: #ff4d4d;
     font-size: 18px;
 }
+
+.heart {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-color: #ff4d4d;
+    clip-path: polygon(50% 0%, 61% 12%, 75% 12%, 87% 25%, 87% 37%, 75% 50%, 50% 87%, 25% 50%, 13% 37%, 13% 25%, 25% 12%, 39% 12%);
+    animation: floatUp 3s infinite;
+}
+
+@keyframes floatUp {
+    from {
+        transform: translateY(0);
+        opacity: 1;
+    }
+    to {
+        transform: translateY(-100px);
+        opacity
