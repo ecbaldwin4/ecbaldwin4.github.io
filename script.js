@@ -5,6 +5,8 @@ document.getElementById('yes-button').addEventListener('click', function() {
 });
 
 document.getElementById('no-button').addEventListener('mouseover', function() {
+    const noButton = document.getElementById('no-button');
+    noButton.classList.add('no-button-moving');
     moveButton();
 });
 

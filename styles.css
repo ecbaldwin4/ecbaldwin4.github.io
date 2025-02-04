@@ -31,11 +31,14 @@ button {
     cursor: pointer;
     font-size: 16px;
     margin: 10px;
-    position: absolute;
 }
 
 button:hover {
     background-color: #ff1a1a;
+}
+
+.no-button-moving {
+    position: absolute;
 }
 
 .hidden {
