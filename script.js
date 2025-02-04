@@ -4,9 +4,22 @@ document.getElementById('yes-button').addEventListener('click', function() {
     createHearts();
 });
 
+document.getElementById('no-button').addEventListener('mouseover', function() {
+    moveButton();
+});
+
 document.getElementById('no-button').addEventListener('click', function() {
     alert("Oh no! Maybe next time!");
 });
+
+function moveButton() {
+    const noButton = document.getElementById('no-button');
+    const x = Math.random() * (window.innerWidth - noButton.offsetWidth);
+    const y = Math.random() * (window.innerHeight - noButton.offsetHeight);
+    noButton.style.position = 'absolute';
+    noButton.style.left = `${x}px`;
+    noButton.style.top = `${y}px`;
+}
 
 function createHearts() {
     for (let i = 0; i < 30; i++) {
