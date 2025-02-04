@@ -7,6 +7,7 @@ body {
     background-color: #ffe6e6;
     margin: 0;
     overflow: hidden;
+    position: relative; /* Add this line */
 }
 
 .container {
@@ -30,6 +31,7 @@ button {
     cursor: pointer;
     font-size: 16px;
     margin: 10px;
+    position: absolute; /* Add this line */
 }
 
 button:hover {
@@ -60,4 +62,7 @@ button:hover {
         opacity: 1;
     }
     to {
-        transform
+        transform: translateY(-100px);
+        opacity: 0;
+    }
+}
