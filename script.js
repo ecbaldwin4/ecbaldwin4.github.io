@@ -1,5 +1,6 @@
 document.getElementById('yes-button').addEventListener('click', function() {
     document.getElementById('response').classList.remove('hidden');
+    document.getElementById('video-container').classList.remove('hidden');
     createHearts();
 });
 
@@ -12,7 +13,7 @@ function createHearts() {
         const heart = document.createElement('div');
         heart.classList.add('heart');
         heart.style.left = Math.random() * 100 + 'vw';
-        heart.style.top = Math.random() * 100 + 'vh'; // Added this line to set the top position
+        heart.style.top = Math.random() * 100 + 'vh';
         heart.style.animationDuration = Math.random() * 2 + 3 + 's';
         document.body.appendChild(heart);
 
