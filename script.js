@@ -1,8 +1,7 @@
-const canvas = document.getElementById("scene");
-const ctx = canvas.getContext("2d");
-const toggleButton = document.getElementById("toggle");
+const pixelCanvas = document.getElementById("scene");
+const ctx = pixelCanvas.getContext("2d");
 
-const base = { w: canvas.width, h: canvas.height };
+const base = { w: pixelCanvas.width, h: pixelCanvas.height };
 ctx.imageSmoothingEnabled = false;
 
 const palette = {
@@ -53,6 +52,7 @@ const palette = {
   flash: "#fff5c9",
   sparkle: "#ffe6a6",
 };
+
 
 const layout = {
   horizon: 110,
@@ -446,14 +446,14 @@ function drawBackground() {
   }
 }
 
-function wrapText(text, maxWidth) {
+function wrapText(drawCtx, text, maxWidth) {
   const words = text.split(" ");
   const lines = [];
   let current = words[0];
   for (let i = 1; i < words.length; i += 1) {
     const word = words[i];
     const test = `${current} ${word}`;
-    if (ctx.measureText(test).width <= maxWidth) {
+    if (drawCtx.measureText(test).width <= maxWidth) {
       current = test;
     } else {
       lines.push(current);
@@ -467,7 +467,7 @@ function wrapText(text, maxWidth) {
 function drawBubble(text, anchorX, anchorY) {
   ctx.font = '10px "Press Start 2P"';
   const maxWidth = 240;
-  const lines = wrapText(text, maxWidth);
+  const lines = wrapText(ctx, text, maxWidth);
   const lineHeight = 12;
   const padding = 7;
   const width = Math.min(
@@ -547,27 +547,8 @@ function easeInOut(t) {
   return t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
 }
 
-const totalDuration = 18;
-let paused = false;
-let start = performance.now();
-let lastElapsed = 0;
-
-function togglePause() {
-  paused = !paused;
-  toggleButton.textContent = paused ? "Play" : "Pause";
-  if (!paused) {
-    start = performance.now() - lastElapsed * 1000;
-  }
-}
-
-toggleButton.addEventListener("click", (event) => {
-  event.stopPropagation();
-  togglePause();
-});
-
-canvas.addEventListener("click", () => {
-  togglePause();
-});
+const sceneDuration = 18;
+const start = performance.now();
 
 function drawScene(time) {
   drawBackground();
@@ -688,10 +669,7 @@ function drawScene(time) {
 }
 
 function loop(now) {
-  if (!paused) {
-    lastElapsed = (now - start) / 1000;
-  }
-  const time = lastElapsed % totalDuration;
+  const time = ((now - start) / 1000) % sceneDuration;
   drawScene(time);
   requestAnimationFrame(loop);
 }
