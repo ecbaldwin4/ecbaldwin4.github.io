@@ -1,0 +1,151 @@
+:root {
+  color-scheme: light;
+  --sky-top: #cfe9ff;
+  --sky-bottom: #9fd4ff;
+  --card: #fff8ee;
+  --ink: #231f1a;
+  --accent: #ff7aa2;
+  --accent-dark: #c45574;
+  --shadow: rgba(20, 16, 12, 0.18);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: "Press Start 2P", "Courier New", monospace;
+  color: var(--ink);
+  background: radial-gradient(circle at top, var(--sky-top), var(--sky-bottom));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 28px 18px 42px;
+}
+
+.card {
+  width: min(940px, 100%);
+  background: var(--card);
+  border: 4px solid var(--ink);
+  box-shadow: 12px 12px 0 var(--ink), 22px 22px 0 var(--shadow);
+  padding: 24px clamp(16px, 5vw, 36px) 36px;
+  display: grid;
+  gap: 24px;
+}
+
+.intro {
+  text-align: center;
+  display: grid;
+  gap: 10px;
+}
+
+.eyebrow {
+  margin: 0;
+  font-size: clamp(10px, 2.2vw, 12px);
+  letter-spacing: 1px;
+}
+
+h1 {
+  margin: 0;
+  font-size: clamp(22px, 5vw, 38px);
+}
+
+.subhead {
+  margin: 0;
+  font-size: clamp(10px, 2.5vw, 13px);
+  line-height: 1.5;
+}
+
+.scene-wrap {
+  display: grid;
+  place-items: center;
+}
+
+.scene {
+  width: min(100%, 860px);
+  aspect-ratio: 16 / 9;
+  background: #f3e7d2;
+  border: 4px solid var(--ink);
+  position: relative;
+  box-shadow: 8px 8px 0 var(--ink);
+  overflow: hidden;
+}
+
+canvas {
+  width: 100%;
+  height: 100%;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
+
+.scene-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding: 12px;
+  pointer-events: none;
+}
+
+.pixel-button {
+  pointer-events: auto;
+  font-family: inherit;
+  font-size: 10px;
+  padding: 8px 12px;
+  border: 3px solid var(--ink);
+  background: var(--accent);
+  color: var(--ink);
+  box-shadow: 4px 4px 0 var(--ink);
+  cursor: pointer;
+}
+
+.pixel-button:active {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0 var(--ink);
+}
+
+.hint {
+  margin: 0;
+  font-size: 9px;
+  background: rgba(255, 248, 238, 0.85);
+  border: 2px solid var(--ink);
+  padding: 6px 8px;
+}
+
+.note {
+  border: 3px dashed var(--ink);
+  padding: 18px;
+  display: grid;
+  gap: 10px;
+  background: #fff1f7;
+}
+
+.note h2 {
+  margin: 0;
+  font-size: clamp(14px, 3vw, 20px);
+}
+
+.note p {
+  margin: 0;
+  font-size: clamp(10px, 2.4vw, 12px);
+  line-height: 1.6;
+}
+
+@media (max-width: 600px) {
+  body {
+    padding: 18px 12px 28px;
+  }
+
+  .card {
+    box-shadow: 8px 8px 0 var(--ink);
+  }
+
+  .scene-overlay {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+}
